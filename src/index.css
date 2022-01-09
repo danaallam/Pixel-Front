@@ -67,12 +67,12 @@
   background-color: #e0e0e2;
 }
 
-.shipmentTitle{
+.shipmentTitle {
   cursor: unset;
 }
 
-.shipmentTitle:hover{
-  background-color: unset
+.shipmentTitle:hover {
+  background-color: unset;
 }
 
 .btns {
@@ -81,7 +81,7 @@
   justify-content: space-between;
 }
 
-.title{
+.title {
   margin-left: 35%;
 }
 
@@ -128,7 +128,7 @@
   box-sizing: border-box;
   display: block;
 }
-button{
+button {
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -138,4 +138,12 @@ button{
 }
 button:hover {
   background: #da3567;
+}
+.reg {
+  margin-top: 5%;
+}
+
+span {
+  color: #da3567;
+  cursor: pointer;
 }

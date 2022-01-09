@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
 const ProtectedRoutes = ({ component: Component, ...rest }) => {
@@ -7,7 +7,7 @@ const ProtectedRoutes = ({ component: Component, ...rest }) => {
       <Route
         {...rest}
         render={(props) => {
-          if (localStorage.getItem("user_token") !== null) {
+          if (localStorage.getItem("token") !== "") {
             return <Component />;
           } else {
             return (

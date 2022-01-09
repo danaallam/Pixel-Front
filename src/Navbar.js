@@ -1,6 +1,23 @@
 import { Link } from "react-router-dom";
+import { useMutation, gql } from "@apollo/client";
+
+const LOGOUT = gql`
+  mutation {
+    logout {
+      message
+    }
+  }
+`;
 
 const Navbar = () => {
+  const [logout ] = useMutation(LOGOUT);
+
+  const logOff = () => {
+    localStorage.setItem("token", "");
+    localStorage.setItem("user", "");
+    logout();
+  };
+
   return (
     <nav className="navbar">
       <h1>Faster</h1>
@@ -15,6 +32,9 @@ const Navbar = () => {
           }}
         >
           Create Shipment
+        </Link>
+        <Link to="/login" onClick={logOff}>
+          logout
         </Link>
       </div>
     </nav>

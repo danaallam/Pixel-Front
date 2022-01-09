@@ -22,7 +22,12 @@ const GetShipmentContextProvider = (props) => {
     GET_SHIPMENTS,
     {
       variables: {
-        id: 1,
+        id: Number(localStorage.getItem("user")),
+      },
+      context: {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       },
     }
   );

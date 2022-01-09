@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
+import { useHistory } from "react-router-dom";
 
-const LOGIN = gql`
+const REGITER = gql`
   mutation (
     $name: String!
     $email: String!
@@ -12,7 +13,7 @@ const LOGIN = gql`
     register(
       input: {
         name: $name
-        email: email
+        email: $email
         address: $address
         phone: $phone
         password: $password
@@ -24,27 +25,27 @@ const LOGIN = gql`
 `;
 
 const Register = () => {
+  const history = useHistory();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
 
-  const [login, { data, loading, error }] = useMutation(LOGIN);
-  if (loading) {
-    console.log(data);
-  }
+  const [register] = useMutation(REGITER);
 
-  const signIn = (e) => {
+  const signUp = (e) => {
     e.preventDefault();
-    console.log(email);
-    login({ input: { email, password } });
+    register({ variables: { email, password, name, address, phone } });
+    setTimeout(() => {
+      history.push("/login");
+    }, 1500);
   };
 
   return (
     <div className="create">
       <h2>Register</h2>
-      <form onSubmit={signIn}>
+      <form onSubmit={signUp}>
         <label>Name</label>
         <input
           type="text"
@@ -80,7 +81,7 @@ const Register = () => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
-        <button>login</button>
+        <button type="submit">register</button>
       </form>
     </div>
   );

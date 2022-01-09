@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        {localStorage.getItem("token") !== "" ? <Navbar /> : <></>}
         <div className="content">
           <Switch>
             <ProtectedRoutes exact path="/" component={Shipments} />

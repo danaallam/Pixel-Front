@@ -17,6 +17,7 @@ const Shipments = () => {
 
   useEffect(() => {
     getShipments();
+    console.log(data);
   }, [called, ref]);
 
   if (loading) {

@@ -14,6 +14,11 @@ const GetShipment = (id) => {
     variables: {
       id,
     },
+    context: {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    },
   });
 
   return {
