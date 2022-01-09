@@ -16,7 +16,7 @@ const Update = () => {
     updateShipment({
       variables: {
         id: location.state.id,
-        user_id: 1,
+        user_id: Number(localStorage.getItem("user")),
         waybill: Number(waybill),
       },
     });

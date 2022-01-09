@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useMutation, gql } from "@apollo/client";
 import { useHistory } from "react-router-dom";
+import { GetShipmentContext } from "./mutations/GetShipmentContext";
 
 const LOGIN = gql`
   mutation ($username: String!, $password: String!) {
@@ -14,6 +15,9 @@ const LOGIN = gql`
 `;
 
 const Login = () => {
+  const {
+    actions: { setShow },
+  } = useContext(GetShipmentContext);
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,17 +25,19 @@ const Login = () => {
   const [login, { data, loading, error }] = useMutation(LOGIN);
 
   useEffect(() => {
-    console.log(error);
+    console.log(loading);
+    console.log(data);
     if (data) {
       localStorage.setItem("token", data.login.access_token);
       localStorage.setItem("user", data.login.user.id);
+      history.push("/");
+      setShow(0);
     }
   }, [loading]);
 
   const signIn = (e) => {
     e.preventDefault();
     login({ variables: { username: email, password } });
-    history.push("/");
   };
 
   return (

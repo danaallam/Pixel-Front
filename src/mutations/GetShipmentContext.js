@@ -17,6 +17,7 @@ const GET_SHIPMENTS = gql`
 const GetShipmentContextProvider = (props) => {
   const [id, setId] = useState("");
   const [ref, setRef] = useState(0);
+  const [show, setShow] = useState(0);
 
   const [getShipments, { error, data, loading, called }] = useLazyQuery(
     GET_SHIPMENTS,
@@ -33,11 +34,12 @@ const GetShipmentContextProvider = (props) => {
   );
 
   const context = {
-    state: { data, loading, error, called, ref },
+    state: { data, loading, error, called, ref, show },
     actions: {
       getShipments,
       setId,
       setRef,
+      setShow,
     },
   };
 
