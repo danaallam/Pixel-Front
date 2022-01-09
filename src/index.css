@@ -147,3 +147,39 @@ span {
   color: #da3567;
   cursor: pointer;
 }
+
+@media screen and (max-width: 1190px) {
+  .btns {
+    width: 20vw;
+  }
+  .title {
+    margin-left: 30%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .btns {
+    width: 30vw;
+  }
+  .title {
+    margin-left: 25%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .navbar h1 {
+    font-size: 20px;
+  }
+  .navbar a {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar h1 {
+    font-size: 17px;
+  }
+  .navbar a {
+    font-size: 11px;
+  }
+}
